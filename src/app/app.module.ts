@@ -3,14 +3,44 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LoginComponent } from './components/pages/login/login.component';
+import { HomeComponent } from './components/pages/home/home.component';
+import { AboutComponent } from './components/pages/about/about.component';
+import { FeatureComponent } from './components/pages/feature/feature.component';
+import { CustomNavbarComponent } from './components/common/custom-navbar/custom-navbar.component';
+import { CategoriesComponent } from './components/common/categories/categories.component';
+import { SingupComponent } from './components/pages/singup/singup.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent,
+    HomeComponent,
+    AboutComponent,
+    FeatureComponent,
+    CustomNavbarComponent,
+    CategoriesComponent,
+    SingupComponent
+   
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule,
+    ToastrModule.forRoot(
+      {
+        positionClass:'toast-top-right',
+        progressBar:true,
+      }
+    ),
+    BrowserAnimationsModule,
+    FormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,65 @@
+<div class="container">
+    <div class="row mt-4">
+        <div class="col-md-6 offset-md-3">
+            <div class="card border rounded shadow-sm">
+                <div class="card-body">
+                    <div class="m-2 text-center">
+                        <img style="width:220px"
+                        class="img-fluid" src="/assets/images/login vector.svg" alt="">
+                    </div>
+                    <h3 class="text-center">Singup Form</h3>
+                    <form #signupFrom="ngForm" (ngSubmit)="fromSubmit($event,signupFrom)">
+                        <div class="mb-3 alert alert-danger" [hidden]="signupFrom.valid || !signupFrom.touched">
+                            Form is not valid !!
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="name">UserName</label>
+                            <input type="name" class="form-control"id="name"placeholder="Enter here"name="name" [(ngModel)]="user.name" required="true" #nameField="ngModel">
+                        <span class="text-danger mt-2 mx-2 " [hidden]="nameField.valid || !nameField.touched">Name is required !!</span>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="email" placeholder="Enter here"  name="email" [(ngModel)]="user.email" required="true" #emailField="ngModel">
+                            <span class="text-danger mt-2 mx-2 " [hidden]="emailField.valid || !emailField.touched">Email is required !!</span>
+                        </div> 
+                        <div class="form-group mb-3">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" id="email" placeholder="Enter here"  name="password" [(ngModel)]="user.password" required="true" #passwordField="ngModel">
+                            <span class="text-danger mt-2 mx-2 " [hidden]="passwordField.valid || !passwordField.touched">Password is required !!</span>
+                        </div>
+                        <div class="gender mb-3" >
+                            <label for=""class="d-block">Gender</label>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio"  id="male" [value]="'male'"  name="gender" [(ngModel)]="user.gender" required="true"  #genderField="ngModel" checked>
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                  Male
+                                </label>
+                              </div>
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" id="female" [value]="'female'" required="true" name="gender" [(ngModel)]="user.gender" >
+                                <label class="form-check-label" for="flexRadioDefault2">
+                                  Female
+                                </label>
+                              </div>
+                              <span class="text-danger mt-2 mx-2 " [hidden]="genderField.valid || !genderField.touched">Gender is required !!</span>
+                        </div>
+                        <div class="mb-3 form-group">
+                            <label for="about">Write about yourself</label>
+                            <textarea name="about" id="" rows="5" class="form-control"  name="about" [(ngModel)]="user.about" required="true" #aboutField="ngModel"></textarea>
+                            <span class="text-danger mt-2 mx-2 " [hidden]="aboutField.valid || !aboutField.touched">About is required !!</span>
+                        </div>
+                        <div class="text-center mb-3">
+                            <button [disabled]="loading" type="submit" class="btn btn-success btn-sm">
+                                <span *ngIf="!loading">Register</span>
+                                <span *ngIf="loading">Please Wait...</span>
+                                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="loading"></span>
+                            </button>                            
+                            <button type="button" (click)="resetForm(signupFrom)" class="btn ms-2 btn-danger btn-sm">Reset</button>
+                            <!-- {{user | json}} -->
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

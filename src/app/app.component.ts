@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ecomm-angular';
+
+  constructor(private toastr: ToastrService){}
+
+  shwtoastr(){
+    this.toastr.error('Hello world!', 'Toastr fun!');
+  }
 }
