@@ -1,0 +1,37 @@
+    <div class="container mt-2">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card shadow-sm">
+                 <div class="card-body">
+                       <div class="header py-2 text-center">
+                        <i class="fas fa-user-shield fa-3x"></i> 
+                        <h3 class="#">Login Here</h3>
+                       </div>
+                        <form (ngSubmit)="formSubmitted($event)">
+                            <div class="form-group mb-3">
+                                <label for="email">Email:</label>
+                                <input type="email" class="form-control" id="email" placeholder="Enter your email" name="email" [(ngModel)]="loginData.email" required="true">
+        
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="password">Password:</label>
+                                <input type="password" class="form-control" id="password" placeholder="Enter your password" name="password" [(ngModel)]="loginData.password" required="true">
+                            </div>
+                            <div class="text-center">
+                            Don't have account <a [routerLink]="['/signup']">Click here</a>
+                            </div>
+                            <div class="text-center">
+                                Don't remember password <a [routerLink]="['/reset-password']">Click here</a>
+                                </div>
+                            <div class="text-center mt-2">
+                                <button type="submit" class="btn btn-primary btn-sm">Login</button>
+                            <button type="reset" class="btn btn-secondary btn-sm ms-2">Reset</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{{loginData  | json}}
+  
