@@ -6,6 +6,10 @@ import { FeatureComponent } from './components/pages/feature/feature.component';
 import { AboutComponent } from './components/pages/about/about.component';
 import { LoginComponent } from './components/pages/login/login.component';
 import { SingupComponent } from './components/pages/singup/singup.component';
+import { DashboardComponent } from './components/user/dashboard/dashboard.component';
+import { normalUserGuard } from './guards/normal-user.guard';
+import { DashboradComponent as AdminDashborad } from './components/admin/dashborad/dashborad.component';
+import { adminUserGuard } from './guards/admin-user.guard';
 
 const routes: Routes = [
   {
@@ -37,6 +41,19 @@ const routes: Routes = [
     path:'signup',
     component: SingupComponent,
     title:'Signup : Electronics Strore'
+  },
+  {
+    path:'user/dashboard',
+    component: DashboardComponent,
+    title:'Dashboard : Electronics Strore',
+    canActivate:[normalUserGuard],
+  },
+
+  {
+    path:'admin',
+    component: AdminDashborad,
+    title:'Admin Dashboard : Electronics Strore',
+    canActivate:[adminUserGuard],
   },
   
 ];

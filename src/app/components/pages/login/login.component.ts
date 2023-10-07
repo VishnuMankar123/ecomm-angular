@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { ToastrService } from 'ngx-toastr';
-import { LoginResponse } from 'src/app/modules/loginresponse.model';
+import { LoginResponse } from "src/app/modules/loginresponse.model";
 import { AuthService } from 'src/app/services/auth.service';
+import { setLoginData } from 'src/app/store/auth/auth.actions';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +19,14 @@ export class LoginComponent {
     password:'',
   };
 
-  constructor(private toaster:ToastrService,private auth:AuthService){}
+  constructor(private toaster:ToastrService,private auth:AuthService,private router:Router ,private store:Store<{authReducer:LoginResponse}>){
+   //for debuge purpose 
+    // this.store.select('authReducer').subscribe({
+    //   next:(data)=>{
+    //     console.log(data);
+    //   }
+    // });
+  }
 
   formSubmitted(event: SubmitEvent){
       event.preventDefault();
@@ -32,6 +42,9 @@ export class LoginComponent {
               //success code
               this.toaster.success('User SuccessFully Login !!','');
               console.log('User Successfully Login',loginResponse);
+              //dispatching the action
+               this.store.dispatch(setLoginData({ loginResponse: loginResponse }));
+               this.router.navigate(['/user/dashboard']);
               
             },
             error:(error: any)=>{
@@ -47,4 +60,6 @@ export class LoginComponent {
           })
       }
   }
+
+
 }
