@@ -15,6 +15,10 @@ import { CategoriesComponent } from './components/common/categories/categories.c
 import { SingupComponent } from './components/pages/singup/singup.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { StoreModule } from '@ngrx/store';
+import { authReducer } from './store/auth/auth.reducers';
+import { DashboardComponent } from './components/user/dashboard/dashboard.component';
+import { DashboradComponent } from './components/admin/dashborad/dashborad.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +29,9 @@ import { HttpClientModule } from '@angular/common/http';
     FeatureComponent,
     CustomNavbarComponent,
     CategoriesComponent,
-    SingupComponent
+    SingupComponent,
+    DashboardComponent,
+    DashboradComponent
    
   ],
   imports: [
@@ -41,6 +47,7 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
+    StoreModule.forRoot({authReducer : authReducer}),
   ],
   providers: [],
   bootstrap: [AppComponent]

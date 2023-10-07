@@ -13,7 +13,7 @@ import { UserService } from 'src/app/services/user.service';
 export class SingupComponent {
 
   //with the help of these object we are getting the from data 
-  user=new User('','','','','');
+  user=new User('','','','','',[],'');
 
   // this variable for spinner loading
   loading=false;
@@ -58,7 +58,7 @@ export class SingupComponent {
 
 resetForm(signupFrom:NgForm){
   //this is used to reset the form
-  this. user=new User('','','','','');
+  this.user = new User('', '', '', '', '',[],'');
   signupFrom.resetForm();
 }
 }
